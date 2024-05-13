@@ -1,0 +1,21 @@
+.list {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    margin-left: 15px;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.item {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.infoText {
+    font-size: 20px;
+    line-height: 1.33;
+    letter-spacing: -.01em;
+    text-align: center;
+}
