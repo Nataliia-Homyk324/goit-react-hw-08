@@ -2,22 +2,21 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import ContactList from '../../components/TaskList/TaskList';
-import ContactForm from '../ContactForm/ContactForm';
-import SearchBox from '../SearchBox/SearchBox';
-import { fetchTasks } from '../../redux/tasks/operations';
-import { selectIsLoading, selectError } from '../../redux/selectors';
-import Error from '../Error/Error';
+import ContactForm from '../../components/ContactForm/ContactForm';
+import SearchBox from '../../components/SearchBox/SearchBox';
+import { fetchContacts } from '../../redux/contacts/contactsOps';
+import { selectIsLoading, selectError } from '../../redux/contacts/selectors';
+import Error from '../../components/Error/Error';
 import { ThreeDots } from 'react-loader-spinner';
 import css from './ContactsPage.module.css';
-// import { selectLoading } from '../../redux/tasks/selectors';
 
-export default function TasksPage() {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchTasks());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
