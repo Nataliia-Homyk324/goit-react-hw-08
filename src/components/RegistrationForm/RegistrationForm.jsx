@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, ErrorMessage, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import css from './RegistrationForm.module.css';
@@ -10,7 +10,9 @@ const validation = Yup.object().shape({
     .max(20, 'Too Long!')
     .required('Required'),
   email: Yup.string().email().required('Required'),
-  password: Yup.string().required('Required').min(8),
+  password: Yup.string()
+    .required('Required')
+    .min(8, 'Invalid password format, min 8 symbol'),
 });
 
 export default function RegistrationForm() {
@@ -35,14 +37,17 @@ export default function RegistrationForm() {
         <label className={css.label}>
           Username
           <Field className={css.formInput} type="text" name="name" />
+          <ErrorMessage name="name" component="span" />
         </label>
         <label className={css.label}>
           Email
           <Field className={css.formInput} type="email" name="email" />
+          <ErrorMessage name="email" component="span" />
         </label>
         <label className={css.label}>
           Password
           <Field className={css.formInput} type="password" name="password" />
+          <ErrorMessage name="password" component="span" />
         </label>
         <button className={css.buttonSignup} type="submit">
           Register

@@ -1,7 +1,7 @@
 
 .containerContac {
     display: flex;
-   
+   border-color: #1f1fbc;
     justify-content: space-between;
     align-items:center;
     gap: 10px;
@@ -34,7 +34,7 @@
     overflow: hidden;
 }
 .nameContact {
-    
+    color: #1f1fbc;
 
     font-size: 18px;
     font-weight: 700;
