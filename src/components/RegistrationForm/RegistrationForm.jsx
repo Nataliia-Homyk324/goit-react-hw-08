@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import css from './RegistrationForm.module.css';
 import * as Yup from 'yup';
+import { toast } from 'react-hot-toast';
 
 const validation = Yup.object().shape({
   name: Yup.string()
@@ -19,8 +20,14 @@ export default function RegistrationForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(register(values));
-    actions.resetForm();
+    dispatch(register(values))
+      .then(() => {
+        toast.success('Success Registration!!!');
+        actions.resetForm();
+      })
+      .catch(() => {
+        toast.success('try again!!!!');
+      });
   };
 
   return (

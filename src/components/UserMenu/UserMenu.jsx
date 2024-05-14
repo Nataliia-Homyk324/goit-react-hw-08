@@ -3,12 +3,20 @@ import { selectUser } from '../../redux/auth/selectors';
 import { logOut } from '../../redux/auth/operations';
 import css from './UserMenu.module.css';
 
+import { toast } from 'react-hot-toast';
+
 export default function UserMenu() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   const handleLogout = () => {
-    dispatch(logOut());
+    dispatch(logOut())
+      .then(() => {
+        toast.success('Success logOut!!!');
+      })
+      .catch(() => {
+        toast.success('try again!!!!');
+      });
   };
 
   return (
