@@ -10,10 +10,14 @@ import Error from '../../components/Error/Error';
 import { ThreeDots } from 'react-loader-spinner';
 import css from './ContactsPage.module.css';
 
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
+
 export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -22,32 +26,36 @@ export default function ContactsPage() {
   return (
     <>
       <PageTitle>Your contacts</PageTitle>
-      <div className={css.container}>
-        <h1 className={css.header}>Phonebook</h1>
-        <ContactForm />
-        <SearchBox />
-        <div className={css.containerLoader}>
-          {isLoading && !isError && (
-            <ThreeDots
-              visible={true}
-              height="80"
-              width="80"
-              color="#6f6e6e"
-              radius="9"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
+      {isLoggedIn ? (
+        <div className={css.container}>
+          <h1 className={css.header}>Phonebook</h1>
+          <ContactForm />
+          <SearchBox />
+          <div className={css.containerLoader}>
+            {isLoading && !isError && (
+              <ThreeDots
+                visible={true}
+                height="80"
+                width="80"
+                color="#6f6e6e"
+                radius="9"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            )}
+          </div>
+          {isError && (
+            <Error>
+              Whoops, something went wrong! <br />
+              Please try reloading this page!
+            </Error>
           )}
+          <ContactList />
         </div>
-        {isError && (
-          <Error>
-            Whoops, something went wrong! <br />
-            Please try reloading this page!
-          </Error>
-        )}
-        <ContactList />
-      </div>
+      ) : (
+        <p>Try logging into your account!</p>
+      )}
     </>
   );
 }
