@@ -1,6 +1,9 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
+import { refreshUser } from '../../redux/auth/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() =>
@@ -12,7 +15,16 @@ const ContactsPage = lazy(() =>
 );
 
 export default function App() {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <p>Refreshing user please wait...</p>
+  ) : (
     <Layout>
       <Suspense fallback={null}>
         <Routes>
