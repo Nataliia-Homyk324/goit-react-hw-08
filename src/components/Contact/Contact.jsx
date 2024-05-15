@@ -3,7 +3,7 @@ import { FaUser, FaRegEdit } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { BsTrash } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, updateContact } from '../../redux/contacts/contactsOps';
+import { deleteContact, updateContact } from '../../redux/contacts/operations';
 import ContainerModalForm from '../ContainerModalForm/ContainerModalForm';
 import {
   selectIsDeletingContact,

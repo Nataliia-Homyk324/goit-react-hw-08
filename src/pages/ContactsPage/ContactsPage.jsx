@@ -4,7 +4,7 @@ import PageTitle from '../../components/PageTitle/PageTitle';
 import ContactList from '../../components/ContactList/ContactList';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import SearchBox from '../../components/SearchBox/SearchBox';
-import { fetchContacts } from '../../redux/contacts/contactsOps';
+import { fetchContacts } from '../../redux/contacts/operations';
 import { selectIsLoading, selectError } from '../../redux/contacts/selectors';
 import Error from '../../components/Error/Error';
 import { ThreeDots } from 'react-loader-spinner';
