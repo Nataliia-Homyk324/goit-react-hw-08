@@ -24,7 +24,7 @@ export default function ContactsPage() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={css.bgImg}>
       <PageTitle>Your contacts</PageTitle>
       {isLoggedIn ? (
         <div className={css.container}>
@@ -56,6 +56,6 @@ export default function ContactsPage() {
       ) : (
         <p>Try logging into your account!</p>
       )}
-    </>
+    </div>
   );
 }

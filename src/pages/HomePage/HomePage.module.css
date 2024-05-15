@@ -1,0 +1,8 @@
+.bgImg {
+    height: 100vh;
+    background-image:linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+        url('../../assets/img/gerl.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+}
