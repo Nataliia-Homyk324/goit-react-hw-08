@@ -45,30 +45,32 @@ export default function Contact({ data: { id, name, number } }) {
           <FaPhoneAlt /> {number}
         </p>
       </div>
-      <button className={css.buttonContact} onClick={() => setConfirm(true)}>
-        {isDeleteContact ? (
-          <CircularProgress size={15} />
-        ) : (
-          <>
-            <BsTrash className={css.iconContact} size="15" /> Delete
-          </>
-        )}
-      </button>
-      <button
-        className={css.buttonContact}
-        onClick={() => {
-          setCurrentContact({ id, name, number });
-          setUpadate(true);
-        }}
-      >
-        {isEditContact ? (
-          <CircularProgress size={15} />
-        ) : (
-          <>
-            <FaRegEdit className={css.iconContact} size="15" /> Edit
-          </>
-        )}
-      </button>
+      <div className={css.thumbBtn}>
+        <button className={css.buttonContact} onClick={() => setConfirm(true)}>
+          {isDeleteContact ? (
+            <CircularProgress size={15} />
+          ) : (
+            <>
+              <BsTrash className={css.iconContact} size="15" /> Delete
+            </>
+          )}
+        </button>
+        <button
+          className={css.buttonContact}
+          onClick={() => {
+            setCurrentContact({ id, name, number });
+            setUpadate(true);
+          }}
+        >
+          {isEditContact ? (
+            <CircularProgress size={15} />
+          ) : (
+            <>
+              <FaRegEdit className={css.iconContact} size="15" /> Edit
+            </>
+          )}
+        </button>
+      </div>
 
       <ContainerModalForm visible={confirm} setVisible={setConfirm}>
         <ConfirmForm onClick={handleDeleteItem} setVisible={setConfirm} />
