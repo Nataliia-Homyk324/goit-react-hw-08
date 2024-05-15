@@ -19,6 +19,7 @@
     "axios": "^1.6.8",
     "clsx": "^2.1.1",
     "formik": "^2.4.6",
+    "fuse.js": "^7.0.0",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
