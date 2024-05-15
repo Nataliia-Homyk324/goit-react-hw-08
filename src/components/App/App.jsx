@@ -5,7 +5,7 @@ import { refreshUser } from '../../redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 import RestrictedRoute from '../RestrictedRoute';
-// import PrivateRoute from './PrivateRoute';
+import PrivateRoute from '../PrivateRoute';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() =>
@@ -46,11 +46,12 @@ export default function App() {
               />
             }
           />
-
-          {/* <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} /> */}
-
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
+            }
+          />
         </Routes>
       </Suspense>
     </Layout>
